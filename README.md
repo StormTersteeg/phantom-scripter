@@ -23,3 +23,8 @@ Getting Started:
 - Enter a path or value in the `Path/Input` input (depending on your `action`).
 - Scripts and other settings are automatically saved.
 - Start using shortcuts to quickly open files, websites, or run scripts from anywhere.
+
+
+<hr>
+
+Phantom-scripter was built using [Python Glide Framework](https://github.com/StormTersteeg/Python-Glide-Framework).
