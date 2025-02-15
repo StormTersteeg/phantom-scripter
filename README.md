@@ -16,5 +16,10 @@ Features:
 
 Getting Started:
 - Download Phantom-Scripter from the [releases page](https://github.com/StormTersteeg/phantom-scripter/releases).
-- Run the app and configure your custom scripts.
+- Run the app.
+- Press the `+` button.
+- Enter a command to trigger your script in the `Command` input.
+- Select your action (`Start File`, `Open Link`).
+- Enter a path or value in the `Path/Input` input (depending on your `action`).
+- Scripts and other settings are automatically saved.
 - Start using shortcuts to quickly open files, websites, or run scripts from anywhere.
