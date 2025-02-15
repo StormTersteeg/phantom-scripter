@@ -36,8 +36,8 @@ If you want to send a `POST` request with JSON data, define a script like this:
 ```yaml
 scripts:
   script-1:
-    command: '!lock'
-    input: https://api.example.com/update-status && {"status":"active"}
+    command: '!new-status'
+    input: https://api.example.com/new-status && {"status":"active"}
     type: POST request
 ```
 
