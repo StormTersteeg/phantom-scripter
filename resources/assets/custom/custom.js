@@ -69,27 +69,43 @@ function createScriptRow(scriptId, cmd = "", type = "", inputVal = "") {
   const commandInput = document.createElement("input");
   commandInput.type = "text";
   commandInput.classList.add("form-control", "app-title", "px-2");
-  commandInput.placeholder = "Command (!do-something)";
+  commandInput.placeholder = "!your-command";
   commandInput.value = cmd;
 
   const actionSelect = document.createElement("select");
   actionSelect.classList.add("form-control", "app-title", "px-2");
   const blankOption = document.createElement("option");
-  blankOption.textContent = "Select Action";
+  blankOption.textContent = "Select action";
   blankOption.disabled = true;
   const startFileOption = document.createElement("option");
-  startFileOption.textContent = "Start File";
+  startFileOption.textContent = "Start file";
   const openLinkOption = document.createElement("option");
-  openLinkOption.textContent = "Open Link";
+  openLinkOption.textContent = "Open link";
+  const runCommandOption = document.createElement("option");
+  runCommandOption.textContent = "Run command";
+  const getRequestOption = document.createElement("option");
+  getRequestOption.textContent = "GET request";
+  const postRequestOption = document.createElement("option");
+  postRequestOption.textContent = "POST request";
+  const putRequestOption = document.createElement("option");
+  putRequestOption.textContent = "PUT request";
+  const deleteRequestOption = document.createElement("option");
+  deleteRequestOption.textContent = "DELETE request";
+
   actionSelect.appendChild(blankOption);
   actionSelect.appendChild(startFileOption);
   actionSelect.appendChild(openLinkOption);
+  actionSelect.appendChild(runCommandOption);
+  actionSelect.appendChild(getRequestOption);
+  actionSelect.appendChild(postRequestOption);
+  actionSelect.appendChild(putRequestOption);
+  actionSelect.appendChild(deleteRequestOption);
   actionSelect.value = type;
 
   const pathInput = document.createElement("input");
   pathInput.type = "text";
   pathInput.classList.add("form-control", "app-title", "px-2");
-  pathInput.placeholder = "Path/Input";
+  pathInput.placeholder = "Input";
   pathInput.value = inputVal;
 
   const deleteBtn = document.createElement("button");

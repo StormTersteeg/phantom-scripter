@@ -2,6 +2,7 @@ import webview, os, sys
 import webbrowser
 from pynput import keyboard
 import yaml
+import requests
 
 last_50_keys_string = ""
 settings = None  # keep it global so changes are instantly recognized
@@ -37,16 +38,68 @@ def execute_script(script_data):
     """Executes the script based on its type and input."""
     script_type = script_data.get("type", "")
     script_input = script_data.get("input", "")
-    if script_type == "Start File":
+    if script_type == "Start file":
         try:
             os.startfile(script_input)
         except Exception as e:
             print(f"Could not start file: {e}")
-    elif script_type == "Open Link":
+    elif script_type == "Open link":
         try:
             webbrowser.open(script_input)
         except Exception as e:
             print(f"Could not open link: {e}")
+    elif script_type == "Run command":
+        try:
+            os.system(script_input)
+        except Exception as e:
+            print(f"Could not run command: {e}")
+    elif script_type == "GET request":
+        try:
+            requests.get(script_input)
+        except Exception as e:
+            print(f"Could not make GET request: {e}")
+    elif script_type == "POST request":
+        try:
+            input_split = script_input.split(" && ")
+            if len(input_split) == 1:
+                url = input_split[0]
+                print("no data")
+                print(requests.post(url).text)
+            elif len(input_split) == 2:
+                url, data = input_split
+                data = eval(data)
+                print(data)
+                print(requests.post(url, data=data).text)
+        except Exception as e:
+            print(f"Could not make POST request: {e}")
+    elif script_type == "PUT request":
+        try:
+            input_split = script_input.split(" && ")
+            if len(input_split) == 1:
+                url = input_split[0]
+                print("no data")
+                print(requests.put(url).text)
+            elif len(input_split) == 2:
+                url, data = input_split
+                data = eval(data)
+                print(data)
+                print(requests.put(url, data=data).text)
+        except Exception as e:
+            print(f"Could not make PUT request: {e}")
+    elif script_type == "DELETE request":
+        try:
+            input_split = script_input.split(" && ")
+            if len(input_split) == 1:
+                url = input_split[0]
+                print("no data")
+                print(requests.delete(url).text)
+            elif len(input_split) == 2:
+                url, data = input_split
+                data = eval(data)
+                print(data)
+                print(requests.delete(url, data=data).text)
+        except Exception as e:
+            print(f"Could not make DELETE request: {e}")
 
 class Api:
     def close(self):
